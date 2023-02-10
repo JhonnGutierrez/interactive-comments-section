@@ -1,0 +1,182 @@
+@mixin Button {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 8px;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color .1s ease-in;
+}
+
+.comment{
+    // background-color: $Moderate_blue;
+    padding: $padding;
+    background-color: $white;
+    border-radius: $borderRadius;
+    margin-top: 16px;
+
+    &__replies{
+        // background-color: #f00;
+        border-left: 1px solid $light_grayish_blue;
+        padding-left: 12px;
+    }
+
+    &__head{
+        // background-color: #f00;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        height: $headHeight;
+
+        &__profile-img{
+            height: 100%;
+        }
+
+        &__username{
+            font-weight: 700;
+            color: $dark_blue;
+        }
+
+        &__created-at{
+            color: $grayish_Blue;
+        }
+
+        &__you{
+            color: $white;
+            background-color: $moderate-blue;
+            font-size: 1.2rem;
+            padding: 4px 8px;
+        }
+    }
+
+    &__body{
+        margin-block: 16px;
+
+        &__content{
+            color: $grayish_Blue;
+            // width: 100%;
+
+            &__replying-to{
+                color: $moderate-blue;
+                font-weight: 700;
+            }
+
+            &__editing{
+                width: 100%;
+                height: 80px;
+                margin-bottom: $padding;
+                border-radius: $borderRadius;
+                border: 1px solid $light_gray;
+                padding: 8px 16px;
+                resize: none;
+                // 60+80+8+16+16+16
+
+                &:focus-visible{
+                    outline: 1px inset $moderate_blue;
+                }
+            }
+        }
+    }
+
+    &__foot{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: $headHeight;
+
+        &__score{
+            display: flex;
+            padding: 8px 12px;
+            gap: 12px;
+            background-color: $light_gray;
+            border-radius: $borderRadius;
+            
+            &__button{
+                display: flex;
+                align-items: center;
+                background-color: transparent;
+                border: none;
+                font-weight: 700;
+                font-size: 1.6rem;
+                // background-color: #f00;
+                cursor: pointer;
+
+                &:hover{
+                    & #plus-icon{
+                        fill: $moderate-blue;
+                    }
+
+                    & #minus-icon{
+                        fill: $moderate-blue;
+                    }
+                }
+
+                & #plus-icon:hover, & #minus-icon {
+                    transition: fill .1s ease-in;
+                }
+            }
+            
+            &__content{
+                font-weight: 500;
+                color: $moderate-blue;
+            }
+        }
+        
+        &__reply{
+            &__button{
+                @include Button;
+                color: $moderate-blue;
+
+                & #reply-icon{
+                    transition: fill .1s ease-in;
+                }
+                
+                &:hover{
+                    color: $light_grayish_blue;
+                    & #reply-icon{
+                        fill: $light_grayish_blue;
+                    }
+                }
+            }
+        }
+
+        &__edit{
+            display: flex;
+
+            &__delete{
+                @include Button;
+                color: $soft_red;
+
+                & #delete-icon{
+                    transition: fill .1s ease-in;
+                }
+
+                &:hover{
+                    color: $pale_red;
+                    & #delete-icon{
+                        fill: $pale_red;
+                    }
+                }
+            }
+
+            &__edit{
+                @include Button;
+                color: $moderate-blue;
+
+                & #edit-icon{
+                    transition: fill .1s ease-in;
+                }
+
+                &:hover{
+                    color: $light_grayish_blue;
+                    & #edit-icon{
+                        fill: $light_grayish_blue;
+                    }
+                }
+            }
+        }
+    }
+}
