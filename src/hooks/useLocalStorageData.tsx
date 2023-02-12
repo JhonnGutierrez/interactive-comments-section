@@ -16,10 +16,8 @@ function useLocalStorageData(key:string) {
     //initialize data
     const isEmpty = localStorage.getItem(key) 
     let commentsData: commentTypes[] 
-    if ( !isEmpty ) {
-        localStorage.setItem(key, JSON.stringify({
-            currentUser, comments
-        }))
+    if ( isEmpty === null ) {
+        localStorage.setItem(key, JSON.stringify(comments))
         
         commentsData = isEmpty ? JSON.parse(isEmpty) : []
     } else commentsData = JSON.parse(isEmpty)
