@@ -12,24 +12,24 @@ const createID = (): number => {
 
 function useLocalStorageData(key:string) {
     const localStorage = window.localStorage
-
-    //initialize data
-    const isEmpty = localStorage.getItem(key) 
-    let commentsData: commentTypes[] 
-    if ( isEmpty === null ) {
-        localStorage.setItem(key, JSON.stringify(comments))
-        
-        commentsData = isEmpty ? JSON.parse(isEmpty) : []
-    } else commentsData = JSON.parse(isEmpty)
-
-    const [data, setData] = useState(commentsData)
-
     // Save data Function
     const saveData = () => {
         localStorage.setItem(key, JSON.stringify(commentsData))
         setData(commentsData)
         location.reload()
     }
+
+    //initialize data
+    const isEmpty = localStorage.getItem(key) 
+    let commentsData: commentTypes[] 
+    if ( isEmpty === null ) {
+        localStorage.setItem(key, JSON.stringify(comments))
+        commentsData = isEmpty ? JSON.parse(isEmpty) : []
+        location.reload()
+    } else commentsData = JSON.parse(isEmpty)
+
+    const [data, setData] = useState(commentsData)
+
 
     interface searchedCommentType {
         searchedComment: commentTypes|replyCommentTypes,
