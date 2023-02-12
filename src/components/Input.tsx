@@ -55,7 +55,7 @@ const Input = ({
                         className="input__form__foot__button" 
                         onClick={(event) => {
                             event.preventDefault();
-                            
+                            handle()
                         }}
                         // {
                         //     "id": 0,
